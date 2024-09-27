@@ -156,12 +156,8 @@ class Tapper:
                 except (Unauthorized, UserDeactivated, AuthKeyUnregistered):
                     raise InvalidSession(self.session_name)
 
-            if settings.USE_REF == True and settings.REF_ID is not None:
-                ref_id = settings.REF_ID
-            else:
-                ref_id = 'ref_7270017507'
 
-            self.start_param = random_choices([ref_id, 'ref_7270017507'])
+            self.start_param = settings.REF_ID
 
             peer = await self.tg_client.resolve_peer('Binance_Moonbix_bot')
             InputBotApp = types.InputBotAppShortName(bot_id=peer, short_name="start")
